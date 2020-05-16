@@ -54,12 +54,23 @@ jtop
 jetson_release
 ```
 
-2. (Optional) **Tensorflow**. Check the [instruction](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html). For Jetpack 4.4 Tensorflow v1.X.X installation command looks like:
+2. **VSCode** - IDE for developement. Follow this [tutorial](https://www.jetsonhacks.com/2019/10/01/jetson-nano-visual-studio-code-python/). Use following commands to isntall:
+```sh
+$ git clone https://github.com/JetsonHacksNano/installVSCode.git
+$ cd installVSCode
+$ ./installVSCode.sh
+```
+To run:
+```sh
+$ code-oss
+```
+
+3. (Optional) **Tensorflow**. Check the [instruction](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html). For Jetpack 4.4 Tensorflow v1.X.X installation command looks like:
 ```sh
 sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 ‘tensorflow<2’
 ```
 
-3. (Optional) **Scikitlearn**. Install via pip, if you'd face issues, please refer [this thread](https://stackoverflow.com/questions/60448903/cannot-install-scikit-learn-on-jetson-nano)
+4. (Optional) **Scikitlearn**. Install via pip, if you'd face issues, please refer [this thread](https://stackoverflow.com/questions/60448903/cannot-install-scikit-learn-on-jetson-nano)
 
 ## 6. Deepstream 4.0
 
