@@ -24,9 +24,11 @@ Current version is r32.4.2 (5/16/2020)
 </p>
 * To extend swap file download and unpack this [repository](https://github.com/JetsonHacksNano/resizeSwapMemory)<br>
 * Execute:
+
 ```sh
 ./setSwapMemorySize -g 4
 ```
+
 * (Optional) Size of zram can be modified, see links in resizeSwapMemory repo<br>
 
 ## 4. Remote access
