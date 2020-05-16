@@ -22,7 +22,7 @@ Current version is r32.4.2 (5/16/2020)
 <p align="center">
   <img src="images/01_swapSize.png" height="672" width="947" title="swap size"/>
 </p>
-* To extend swap file download and unpack this [repository](https://github.com/JetsonHacksNano/resizeSwapMemory)<br>
+* To extend swap file download and unpack this [repo](https://github.com/JetsonHacksNano/resizeSwapMemory) <br>
 * Execute:
 
 ```sh
@@ -64,15 +64,15 @@ jetson_release
 2. **VSCode** - IDE for developement. Follow this [tutorial](https://www.jetsonhacks.com/2019/10/01/jetson-nano-visual-studio-code-python/). Use following commands to isntall:
 
 ```sh
-$ git clone https://github.com/JetsonHacksNano/installVSCode.git
-$ cd installVSCode
-$ ./installVSCode.sh
+git clone https://github.com/JetsonHacksNano/installVSCode.git
+cd installVSCode
+./installVSCode.sh
 ```
 
 To run:
 
 ```sh
-$ code-oss
+code-oss
 ```
 
 3. (Optional) **Tensorflow**. Check the [instruction](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html). For Jetpack 4.4 Tensorflow v1.X.X installation command looks like:
