@@ -3,7 +3,7 @@ Installation, articles, tutorials
 
 ## Installation
 
-1. Donwnload latests Deepstream 4.X version from [here](https://developer.nvidia.com/embedded/deepstream-on-jetson-downloads-archived) (make sure that Jetpack version is correct //Use **jtop**)
+1. Download latests Deepstream 4.X version from [here](https://developer.nvidia.com/embedded/deepstream-on-jetson-downloads-archived) (make sure that Jetpack version is correct //Use **jtop**)
 2. Unzip archive on device
 3. Follow the [guide](https://docs.nvidia.com/metropolis/deepstream/4.0/dev-guide/index.html)
 
