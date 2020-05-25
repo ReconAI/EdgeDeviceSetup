@@ -31,14 +31,17 @@ Check config files txt for information on input/ouput format (rtsp or file) and 
 For reference see [guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html) -> 'Python Sample Application Source Details' and [Deepstream Python Apps](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps)
 
 Github project contains following samples: <br>
-1. deepstream-test1 -- 4-class object detection pipeline (Vehicle , RoadSign, Bicycle, Person)
-2. deepstream-test2 -- 4-class object detection (Vehicle , RoadSign, Bicycle, Person), tracking and attribute classification (vehicle color, maker and type) pipeline 
-3. deepstream-test3 -- multi-stream pipeline performing 4-class object detection (Vehicle , RoadSign, Bicycle, Person)
-4. deepstream-test4 -- msgbroker for sending analytics results to the cloud
-5. deepstream-imagedata-multistream -- multi-stream pipeline with access to image buffers
-6. deepstream-ssd-parser -- SSD model inference via Triton server with output parsing in Python
-7. deepstream-test1-usbcam -- deepstream-test1 pipelien with USB camera input
-8. deepstream-test1-rtsp-out -- deepstream-test1 pipeline with RTSP output
+
+| Sample        | Description           |
+| ------------- |-------------:|
+| deepstream-test1 | 4-class object detection pipeline (Vehicle , RoadSign, Bicycle, Person)  |
+| deepstream-test2 | 4-class object detection (Vehicle , RoadSign, Bicycle, Person), tracking and attribute classification (vehicle color, maker and type) pipeline |
+| deepstream-test3 | Multi-stream pipeline performing 4-class object detection (Vehicle , RoadSign, Bicycle, Person) |
+| deepstream-test4 | msgbroker for sending analytics results to the cloud |
+| deepstream-imagedata-multistream | Multi-stream pipeline with access to image buffers |
+| deepstream-ssd-parser | SSD model inference via Triton server with output parsing in Python |
+| deepstream-test1-usbcam | deepstream-test1 pipelien with USB camera input |
+| deepstream-test1-rtsp-out | deepstream-test1 pipeline with RTSP output |
 
 # Transfer Learning Toolkit 2.0
 
