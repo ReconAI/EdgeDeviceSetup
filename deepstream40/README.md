@@ -14,7 +14,7 @@ Samples description can be found [here](https://docs.nvidia.com/metropolis/deeps
 Samples are run from console like:
 
 ```sh
-./deepstream-test1-app ../../../samples/streams/sample_720p.h264
+deepstream-app -c <path_to_config_file>
 ```
 
 Basically each sample among 'test-' apps is built one upon another:<br>
