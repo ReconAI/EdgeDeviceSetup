@@ -33,7 +33,7 @@ For reference see [guide](https://docs.nvidia.com/metropolis/deepstream/dev-guid
 Github project contains following samples: <br>
 
 | Sample        | Description           |
-| ------------- |-------------:|
+| ------------- |-------------|
 | deepstream-test1 | 4-class object detection pipeline (Vehicle , RoadSign, Bicycle, Person)  |
 | deepstream-test2 | 4-class object detection (Vehicle , RoadSign, Bicycle, Person), tracking and attribute classification (vehicle color, maker and type) pipeline |
 | deepstream-test3 | Multi-stream pipeline performing 4-class object detection (Vehicle , RoadSign, Bicycle, Person) |
@@ -51,7 +51,7 @@ Transfer Learning Toolkit is a software for easy neural netowk training using Nv
 
 Provided instruction is based on this [article](https://medium.com/@Smartcow_ai/nvidia-transfer-learning-toolkit-a-comprehensive-guide-75148d1ac1b) describing Transfer Leraning Toolkit v.1 installation.<br>
 
-<b>Prerequisites</b><br><br>
+<b>Prerequisites</b><br>
 
 To successfully utilize TLTv2 you would need a machine with Nvidia graphics card with preinstalled Linux operating system.
 To follow along the instruction following software has to be installed:M<br>
@@ -84,7 +84,7 @@ sudo systemctl start docker
 
 6. In addition please create [NGC](https://ngc.nvidia.com) account<br>
 
-<b>Installation process</b><br><br>
+<b>Installation process</b><br>
 
 Valid instruction is located [here](https://ngc.nvidia.com/catalog/containers/nvidia:tlt-streamanalytics)
 1. Pull docker image
