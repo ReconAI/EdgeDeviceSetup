@@ -7,10 +7,26 @@ Deepstream is an Nvidia gramework to develop and run deep learning applications 
 1. Download latests Deepstream 5.X version from [here](https://developer.nvidia.com/deepstream-getting-started) (make sure that Jetpack version is correct //Use **jtop**)
 2. Unzip archive on device
 3. Follow the [guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html)
+4. Verify that Deepstream was installed:<br>
+Run deepstream app in help mode:
+
+```sh
+deepstream-app --help
+```
+
+Run universal Deepstream App with Jetson Nano config<br>
+
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/samples/configs/deepstream-app
+deepstream-app -c source8_1080p_dec_infer-resnet_tracker_tiled_display_fp16_nano.txt
+```
 
 ## Samples
 
 Deepstream contains multiple samples listed in [guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html) see 'Sample Application Source Details' <br>
+
+### Deepstream-App Universal Sample
+
 Sample can be tested by running command below:<br>
 
 ```sh
@@ -23,12 +39,55 @@ For example:<br>
 cd /opt/nvidia/deepstream/deepstream-5.0
 deepstream-app -c samples/configs/deepstream-app/source8_1080p_dec_infer-resnet_tracker_tiled_display_fp16_nano.txt
 ```
-Sample above demonstrates 8 Decode + Infer + Tracker; for Jetson Nano only.
-Check config files txt for information on input/ouput format (rtsp or file) and internal modules (neural nets and trackers)
+Sample above demonstrates 8 Decode + Infer + Tracker; for Jetson Nano only.<br>
+Check config files txt for information on input/ouput format (rtsp or file) and internal modules (neural nets and trackers).<br>
+Check config in <b>deepstream-app-config<b> folder for one stream examples with file/rtsp input and output.<br>
+VLC player can be used for rtsp stream reading from this address: 'rtsp://192.168.1.132:8554/ds-test' (put your Jetson IP address).
+
+### Other Samples
+
+Other samples can be found by this path:<br>
+/opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps<br>
+
+To build a sample, go to sample folder and run commands below:
+
+```sh
+sudo make clean
+sudo make
+```
+
+Run deepstream-test1 sample:
+
+```sh
+./deepstream-test1-app /opt/nvidia/deepstream/deepstream-5.0/samples/streams/sample_720p.h264
+```
+
+Please note that this sample is taking <b>.h264 video (extension type) as an input</b>.
 
 ## Python API
 
 For reference see [guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html) -> 'Python Sample Application Source Details' and [Deepstream Python Apps](https://github.com/NVIDIA-AI-IOT/deepstream_python_apps)
+
+### Basic installation steps
+
+1. ds_pybind_v0.9.tbz2 file can be found in '/opt/nvidia/deepstream/deepstream-5.0'
+2. Run 'tar xf ds_pybind_v0.9.tbz2 -C /opt/nvidia/deepstream/deepstream-5.0/sources'
+3. Python samples located here: /opt/nvidia/deepstream/deepstream-5.0/sources/python/apps
+4. For each sample check README.MD as it contains additional instructions (mainly libraries to be installed)<br>
+'deepstream-test1-rtsp-out' example:
+
+```sh
+Installing GstRtspServer and instrospection typelib
+===================================================
+$ sudo apt update
+$ sudo apt-get install libgstrtspserver-1.0-0 gstreamer1.0-rtsp
+For gst-rtsp-server (and other GStreamer stuff) to be accessible in
+Python through gi.require_version(), it needs to be built with
+gobject-introspection enabled (libgstrtspserver-1.0-0 is already).
+Yet, we need to install the introspection typelib package:
+$ sudo apt-get install libgirepository1.0-dev
+$ sudo apt-get install gobject-introspection gir1.2-gst-rtsp-server-1.0
+```
 
 Github project contains following samples: <br>
 
@@ -42,6 +101,16 @@ Github project contains following samples: <br>
 | deepstream-ssd-parser | SSD model inference via Triton server with output parsing in Python |
 | deepstream-test1-usbcam | deepstream-test1 pipelien with USB camera input |
 | deepstream-test1-rtsp-out | deepstream-test1 pipeline with RTSP output |
+
+### Python samples troubleshooting
+
+Python applications does not show execution errors properly, especially internal GStreamer errors.<br>
+So troubleshooting plan should consist of following steps:
+1. Run C++ test samples and make sure they work as intended
+2. Run Python samples and make sure they work as intended
+3. ...
+
+If execution is failing - google issue and check what's wrong. It can be either incorrect input video format, missing C++ or Python libraries, insufficient memory, etc.
 
 # Transfer Learning Toolkit 2.0
 

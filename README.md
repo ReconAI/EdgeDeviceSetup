@@ -31,6 +31,13 @@ Current version is r32.4.2 (5/16/2020)
 
 * (Optional) Size of zram can be modified, see links in resizeSwapMemory repo<br>
 
+2. For additional clock speed increase run following commands:
+
+```sh
+sudo nvpmodel -m 0
+sudo jetson_clocks
+```
+
 ## 4. Remote access
 
 1. To access Edge device in Remote Desktop mode install 'NoMachne for arm' ([link](https://www.nomachine.com/download/linux&id=30&s=ARM)) on Edge device and 'NoMachine Desktop' on your computer. Software works only in local network, in order to access device in other network VPN has to be setup.
