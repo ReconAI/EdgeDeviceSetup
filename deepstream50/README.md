@@ -186,6 +186,8 @@ jupyter notebook --ip 0.0.0.0 --port 8888 --allow-root
 
 ## Examples/Pretrained networks
 
+### Overview
+
 NGC repository contains few pretrained models which can be used in commercial product:
 
 1. [PeopleNet](https://ngc.nvidia.com/catalog/models/nvidia:tlt_peoplenet)
@@ -244,6 +246,29 @@ Jetson Xavier NX - 3275 FPS<br>
 
 7. [Google Open Image Model](https://ngc.nvidia.com/catalog/models/nvidia:iva:tlt_iva_classification_resnet18)
 Nework is a ResNet18 trained on Google Open Image Dataset<br>
+
+### Samples
+
+For referebce see '[Link](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html)' -> 'Contents of the package'<br>
+
+'TrafficCamNet' example:<br>
+samples/configs/tlt_pretrained_models: Reference application configuration files for the pre-trained models provided by Nvidia Transfer Learning Toolkit (TLT)<br>
+deepstream_app_source1_trafficcamnet.txt (Demonstrates object detection using TrafficCamNet object detection model on one source)
+
+Installation:
+1. Create 'tlt_pretrained_models' folder under '/opt/nvidia/deepstream/deepstream-5.0/samples/models'
+2. Execute:
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/samples/models/tlt_pretrained_models
+wget --content-disposition https://api.ngc.nvidia.com/v2/models/nvidia/tlt_trafficcamnet/versions/pruned_v1.0/zip -O tlt_trafficcamnet_pruned_v1.0.zip
+sudo unzip tlt_trafficcamnet_pruned_v1.0.zip -d /opt/nvidia/deepstream/deepstream-5.0/samples/models/tlt_pretrained_models/trafficcamnet
+sudo chmod -R 777 /opt/nvidia/deepstream/deepstream-5.0/samples/models/tlt_pretrained_models/trafficcamnet
+```
+3. Run deepstream-app:
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/samples/configs/tlt_pretrained_models
+deepstream-app -c deepstream_app_source1_trafficcamnet.txt
+```
 
 ## Transfer Learning Toolkit usage with AWS
 

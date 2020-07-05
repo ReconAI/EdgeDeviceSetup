@@ -47,4 +47,34 @@ Basically each sample among 'test-' apps is built one upon another:<br>
 | Back-to-Back detector      | Application with step detector: 1. Find cars; 2. Hide License plates      |   [Link](https://github.com/NVIDIA-AI-IOT/deepstream_reference_apps/tree/master/back-to-back-detectors) |
 | TLT and deepstream usage      | How to deploy TLT-trained networks in Deepstream applications      |   [Link](https://github.com/NVIDIA-AI-IOT/deepstream_4.x_apps) |
 
+### Back-to-Back detector (Deepstream 5.0 installation)
+
+Reference sources:
+1. [Github project](https://github.com/NVIDIA-AI-IOT/deepstream_reference_apps/tree/master/back-to-back-detectors)
+2. [Nvidia Forum QnA](https://forums.developer.nvidia.com/t/back-to-back-detector-with-deepstream-5-0/123381)
+
+Instruction:
+1. Go to '/opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps'
+2. Create 'deepstream-back-to-back' and 'deepstream-redaction' folders
+3. Download [Github project back-to-back](https://github.com/NVIDIA-AI-IOT/deepstream_reference_apps) and save in 'deepstream-back-to-back'
+3. Download [Github project redaction](https://github.com/NVIDIA-AI-IOT/redaction_with_deepstream) and save in 'deepstream-redaction'
+4. Unzip 'deepstream_reference_apps-master.zip' -> 'back-to-back-detectors' folder contents into 'deepstream-back-to-back' folder
+5. Unzip 'redaction_with_deepstream-master.zip' into 'deepstream-readction'
+6. Go to '/opt/nvidia/deepstream/deepstream-5.0/samples/models', create 'Secondary_FaceDetect' folder and move '/opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-redaction/fd_lpd_model' contents in there.
+7. Return to '/opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-back-to-back'
+8. According to [this](https://forums.developer.nvidia.com/t/back-to-back-detector-with-deepstream-5-0/123381/3) make changes in Makefile and back_to_back_detectors.c; Make sure that relative pathes in primary_detector_config.txt and secondary_detector_config.txt are valid.
+9. Build the solution
+
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-back-to-back
+export DS_SDK_ROOT="/opt/nvidia/deepstream/deepstream-5.0"
+make clean
+make
+```
+
+10. Run the applicaiton
+
+```sh
+./back-to-back-detectors /opt/nvidia/deepstream/deepstream-5.0/samples/streams/sample_720p.h264
+```
 
