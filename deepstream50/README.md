@@ -41,7 +41,7 @@ deepstream-app -c samples/configs/deepstream-app/source8_1080p_dec_infer-resnet_
 ```
 Sample above demonstrates 8 Decode + Infer + Tracker; for Jetson Nano only.<br>
 Check config files txt for information on input/ouput format (rtsp or file) and internal modules (neural nets and trackers).<br>
-Check config in <b>deepstream-app-config<b> folder for one stream examples with file/rtsp input and output.<br>
+Check config in <b>deepstream-app-config</b> folder for one stream examples with file/rtsp input and output.<br>
 VLC player can be used for rtsp stream reading from this address: 'rtsp://192.168.1.132:8554/ds-test' (put your Jetson IP address).
 
 ### Other Samples
