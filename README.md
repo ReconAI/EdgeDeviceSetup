@@ -88,7 +88,26 @@ code-oss
 sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 ‘tensorflow<2’
 ```
 
+Tensorflow (1.X) installation:
+
+```sh
+sudo pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 tensorflow-gpu==1.15.2+nv20.4
+```
+
 4. (Optional) **Scikitlearn**. Install via pip, if you'd face issues, please refer [this thread](https://stackoverflow.com/questions/60448903/cannot-install-scikit-learn-on-jetson-nano)
+
+5. (Optional) **OpenVPN**
+
+```sh
+sudo apt-get install openvpn
+```
+
+Run:
+
+```sh
+sudo openvpn --config jetsonHome.ovpn
+```
+
 
 ## 6. Deepstream 4.0
 
