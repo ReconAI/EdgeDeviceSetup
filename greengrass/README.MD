@@ -1,1 +1,1 @@
-# Docker, OpenCV and Greengrass installation
+# Docker, Greengrass installation

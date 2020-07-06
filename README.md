@@ -96,7 +96,87 @@ sudo pip3 install --extra-index-url https://developer.download.nvidia.com/comput
 
 4. (Optional) **Scikitlearn**. Install via pip, if you'd face issues, please refer [this thread](https://stackoverflow.com/questions/60448903/cannot-install-scikit-learn-on-jetson-nano)
 
-5. (Optional) **OpenVPN**
+5. (Optional) **OpenCV with CUDA**
+
+Install required dependencies:
+
+```sh
+sudo apt-get install build-essential cmake unzip pkg-config libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libv4l-dev v4l-utils qv4l2 v4l2ucp libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran python-dev python3-dev python-numpy python3-numpy libtbb2 libtbb-dev
+
+sudo jetson_swap -s 4 # for Nano only, we need to have bigger swap to prevent build failure
+```
+
+Set parameter depending on machine. See [reference](https://developer.nvidia.com/cuda-gpus).
+
+```sh
+export CUDA_ARCH_BIN=5.3 # Nano
+export CUDA_ARCH_BIN=7.2 # Xavier
+```
+
+Execute below to see OpenCV version and CUDA compilation status
+```sh
+jetson_release
+```
+
+Set parameter depending on OpenCV version:
+
+```sh
+export OPENCV_VER=4.1.1
+```
+
+Download and compile OpenCV:
+
+```sh
+cd ~
+wget -O opencv.${OPENCV_VER}.zip https://github.com/opencv/opencv/archive/${OPENCV_VER}.zip
+wget -O opencv_contrib.${OPENCV_VER}.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VER}.zip
+unzip opencv.${OPENCV_VER}.zip
+unzip opencv_contrib.${OPENCV_VER}.zip
+
+cd ~/opencv-${OPENCV_VER}
+
+sed -i 's/include <Eigen\/Core>/include <eigen3\/Eigen\/Core>/g' modules/core/include/opencv2/core/private.hpp
+
+mkdir -p build
+cd build
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE \
+-D CMAKE_INSTALL_PREFIX=/usr/local \
+-D INSTALL_PYTHON_EXAMPLES=ON \
+-D OPENCV_ENABLE_NONFREE=ON \
+-D WITH_CUDA=ON \
+-D WITH_CUDNN=ON \
+-D OPENCV_DNN_CUDA=ON \
+-D ENABLE_FAST_MATH=1 \
+-D CUDA_FAST_MATH=1 \
+-D CUDA_ARCH_BIN="${CUDA_ARCH_BIN}" \
+-D CUDA_ARCH_PTX="" \
+-D WITH_CUBLAS=1 \
+-D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-${OPENCV_VER}/modules \
+-D WITH_GSTREAMER=ON \
+-D WITH_LIBV4L=ON \
+-D BUILD_opencv_python2=ON \
+-D BUILD_opencv_python3=ON \
+-D INSTALL_C_EXAMPLES=OFF \
+-D BUILD_TESTS=OFF \
+-D BUILD_EXAMPLES=OFF ..
+
+make -j3 #resource hungry operation - requires ~10Gb free memory
+
+sudo make install
+```
+
+Verify OpenCV installation (CUDA has to be enabled):
+```sh
+opencv_version -v
+```
+Alternative verification:
+```sh
+jetson_release
+```
+
+
+6. (Optional) **OpenVPN**
 
 ```sh
 sudo apt-get install openvpn
