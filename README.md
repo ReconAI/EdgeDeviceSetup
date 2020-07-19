@@ -8,9 +8,10 @@ Instructions below can be applied mainly to Jetson Nano device for Development a
 1. Install 32Gb (or bigger) SD card if possbile
 
 ## 1. OS installation
-Current version is r32.4.2 (5/16/2020)
+Version for this manual is <b>r32.4.2</b> (5/16/2020)
 
-1. Follow [this](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write) instruction to download and flash sd card.
+1. Download sd card image from [here](https://developer.nvidia.com/jetpack-sdk-44-dp-archive)
+2. Follow [this](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write) instruction to download and flash sd card.
 
 ## 2. First boot
 

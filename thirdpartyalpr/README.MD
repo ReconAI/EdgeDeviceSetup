@@ -3,25 +3,21 @@
 ## OpenALPR
 [Site](https://github.com/openalpr/openalpr)
 
-### Prerequisites
+### Installation instruction
+[Medium](https://medium.com/@alannewcomer/license-plate-recognition-with-a-jetson-nano-e94c6ff683bc)
 
-```sh
-sudo apt install tesseract-ocr
-sudo apt install libtesseract-dev
-```
+1. Get leptonica from:
+'http://www.leptonica.org/source/leptonica-1.78.0.tar.gz'
 
-### 1. Install using 'The Easy Way' !!! [Link](https://github.com/openalpr/openalpr/wiki/Compilation-instructions-(Ubuntu-Linux))
+### [Helpful instruction](https://github.com/openalpr/openalpr/issues/660)
 
-[Helpful instaruction](https://github.com/openalpr/openalpr/issues/660)
+Add the tesseract PPA to your repo list
+sudo add-apt-repository ppa:alex-p/tesseract-ocr -y
+sudo apt-get update -y
 
-Next:
-# Install the binaries/libraries to your local system (prefix is /usr)
-sudo make install
-
-# Test the library
-wget http://plates.openalpr.com/h786poj.jpg -O lp.jpg
-alpr lp.jpg
-
+Reinstall tesseract
+sudo apt-get purge libtesseract-dev
+sudo apt-get install libtesseract-dev
 
 2. Install Python library from sources:
 
@@ -84,5 +80,18 @@ On Linux systems, the default paths for files required to instantiate the Alpr c
 1. /etc/openalpr/openalpr.conf
 2. /usr/share/openalpr/runtime_data
 
+### Uninstall
 
+Remove tesseract:
 
+```sh
+sudo apt-get remove tesseract-ocr
+```
+
+Remove openalpr:
+
+```sh
+sudo apt-get autoremove openalpr
+sudo apt-get autoremove libopenalpr
+
+```

@@ -5,6 +5,7 @@ Deepstream is an Nvidia gramework to develop and run deep learning applications 
 ## Installation
 
 1. Download latests Deepstream 5.X version from [here](https://developer.nvidia.com/deepstream-getting-started) (make sure that Jetpack version is correct //Use **jtop**)
+1.1 Do not run 'sudo apt install --reinstall nvidia-l4t-gstreamer' if you don't want Jetpack version to be changed
 2. Unzip archive on device
 3. Follow the [guide](https://docs.nvidia.com/metropolis/deepstream/dev-guide/index.html)
 4. Verify that Deepstream was installed:<br>
@@ -52,6 +53,7 @@ Other samples can be found by this path:<br>
 To build a sample, go to sample folder and run commands below:
 
 ```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-test1
 sudo make clean
 sudo make
 ```
@@ -59,10 +61,27 @@ sudo make
 Run deepstream-test1 sample:
 
 ```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-test1
 ./deepstream-test1-app /opt/nvidia/deepstream/deepstream-5.0/samples/streams/sample_720p.h264
 ```
 
 Please note that this sample is taking <b>.h264 video (extension type) as an input</b>.
+
+Deepstream-test3 sample:
+
+Install:
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-test3
+sudo make clean
+sudo make
+```
+
+Run:
+
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-test3
+./deepstream-test3-app file:///opt/nvidia/deepstream/deepstream-5.0/samples/streams/StreamRecord_cam2_test.mp4
+```
 
 ## Python API
 
@@ -101,6 +120,42 @@ Github project contains following samples: <br>
 | deepstream-ssd-parser | SSD model inference via Triton server with output parsing in Python |
 | deepstream-test1-usbcam | deepstream-test1 pipelien with USB camera input |
 | deepstream-test1-rtsp-out | deepstream-test1 pipeline with RTSP output |
+
+### Python samples testing
+
+#### deepstream-test3 sample
+
+Following application is reading data from any data source (rtps/file), applies car detection network and renders on screen.<br>
+How to run
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/python/apps/deepstream-test3
+
+python3 deepstream_test_3.py file:///opt/nvidia/deepstream/deepstream-5.0/samples/streams/sample_720p.mp4
+python3 deepstream_test_3.py file:///opt/nvidia/deepstream/deepstream-5.0/samples/streams/StreamRecord_cam2_test.mp4
+```
+
+Notes:
+1. Detected cars are marked with red bboxes and 'Car' label in the top left corner
+2. Application cmd output:
+```sh
+Frame Number= 110 Number of Objects= 1 Vehicle_count= 1 Person_count= 0
+Frame Number= 111 Number of Objects= 0 Vehicle_count= 0 Person_count= 0
+```
+
+#### deepstream-test1-rtsp-out
+
+This application takes .h264 video as an input
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/python/apps/deepstream-test1-rtsp-out
+python3 deepstream_test1_rtsp_out.py -i /opt/nvidia/deepstream/deepstream-5.0/samples/streams/sample_720p.h264
+```
+
+To check results run VLC player on a separate machine with the following address:
+```sh
+rtsp://<server IP>:8554/ds-test
+
+rtsp://192.168.1.132:8554/ds-test
+```
 
 ### Python samples troubleshooting
 
