@@ -1,0 +1,10 @@
+Pipeline
+
+- One input source (rtsp/file[mp4])
+- TrafficCamNet 
+- Default tracker
+- Secondary network - car type
+- Primary network - license plate
+- rtsp output
+
+

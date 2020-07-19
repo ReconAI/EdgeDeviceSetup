@@ -178,5 +178,7 @@ python3 deepstream_test_12_saving.py file:///opt/nvidia/deepstream/deepstream-5.
 
 python3 deepstream_test_12_saving.py file:///opt/nvidia/deepstream/deepstream-5.0/samples/streams/StreamRecord_cam2_test3.mp4
 
+python3 deepstream_test_12_saving.py file:///opt/nvidia/deepstream/deepstream-5.0/samples/streams/StreamRecord_cam2_test4.mp4
+
 rtsp://192.168.1.132:8554/ds-test
 ```

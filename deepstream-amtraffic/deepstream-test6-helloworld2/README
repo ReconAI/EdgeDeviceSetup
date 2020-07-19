@@ -1,0 +1,7 @@
+Pipeline
+
+- One input source (rtsp/file[mp4])
+- TrafficCamNet (!!!)
+- Default tracker
+- Three networks (car class, type, ...)
+- Output in the window
