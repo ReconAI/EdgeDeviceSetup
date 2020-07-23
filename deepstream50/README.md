@@ -328,3 +328,57 @@ deepstream-app -c deepstream_app_source1_trafficcamnet.txt
 ## Transfer Learning Toolkit usage with AWS
 
 TLTv2 can be used in continuous training process. It requires a dedicated Linux machine with Nvidia GPU and CUDA.
+
+## Message broker installation
+
+Based on [this tutorial](https://forums.developer.nvidia.com/t/nvmsgbroker-error/128533) and [this thread](https://aws.amazon.com/ru/blogs/iot/how-to-integrate-nvidia-deepstream-on-jetson-devices-with-aws-iot-core-and-aws-iot-greengrass/)
+
+1. Commands to be executed on *Jetson*:
+```sh
+cd ~
+export DEEPSTREAM_SDK_PATH=/opt/nvidia/deepstream/deepstream-5.0
+cd ~/Downloads
+git clone git@github.com:awslabs/aws-iot-core-integration-with-nvidia-deepstream.git
+cd aws-iot-core-integration-with-nvidia-deepstream
+cp -r aws_protocol_adaptor ${DEEPSTREAM_SDK_PATH}/sources/libs
+```
+Commands above:
+- Create system variable with path to Deepstream folder
+- Download AWS Adaptor for Deepstream ([alternative download path](https://github.com/awslabs/aws-iot-core-integration-with-nvidia-deepstream))
+- Unzip and move it to Deepstream folder
+
+2. Follow AWS instruction on the step 'Procedure 3' to the 'Procedure 4'
+
+Note on certificates rename:
+
+- XXX-certificate.pem.crt -> certificatePem.cert.pem
+- XXX-private.pem.key -> privateKey.private.key
+- XXX-public.pem.key -> publicKey.public.key
+- AmazonRootCA1.pem -> root.ca.pem
+
+Note on Endpoint address:
+
+- 'Setting' can be found in the tab on the right in the 'deep bottom' of the page, after Act, Test, Software, *Settings*
+
+3. Testing 'Test App 4' (C++)
+
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/apps/sample_apps/deepstream-test4
+make
+./deepstream-test4-app -i ../../../../samples/streams/sample_720p.h264 -p ../../../libs/aws_protocol_adaptor/device_client/libnvds_aws_proto.so --conn-str=hello -c ../../../libs/aws_protocol_adaptor/device_client/cfg_aws.txt -t test --no-display
+```
+
+4. Testing 'Test App 4' (Python)
+
+Preparation step: 
+- Check contents of '/opt/nvidia/deepstream/deepstream-5.0/sources/libs/aws_protocol_adaptor/device_client/cfg_aws.txt'
+- Write down following configs - HostAddress, Port, ThingName
+- Format string in following way "HostAddress:Port:ThingName" (example "a3qtghj8wcrl9r-ats.iot.eu-west-2.amazonaws.com;443;ds_app")
+- Put this string into --conn-str parameter of script execution
+
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/python/apps/deepstream-test4
+python3 deepstream_test_4.py -i /opt/nvidia/deepstream/deepstream/samples/streams/sample_720p.h264 -p /opt/nvidia/deepstream/deepstream/sources/libs/aws_protocol_adaptor/device_client/libnvds_aws_proto.so --no-display --conn-str="a3qtghj8wcrl9r-ats.iot.eu-west-2.amazonaws.com;443;ds_app" -c /opt/nvidia/deepstream/deepstream/sources/libs/aws_protocol_adaptor/device_client/cfg_aws.txt
+```
+
+
