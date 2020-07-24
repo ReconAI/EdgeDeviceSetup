@@ -1,6 +1,8 @@
 # Deepstream AM-Traffic samples
 
 [Python SDK Reference](https://docs.nvidia.com/metropolis/deepstream/python-api/index.html)
+[Jetson Nano Connection Instruction](https://docs.google.com/document/d/1hDoDEHMTkMPDQZCvGM-OgKTn2EXkXXvS0UaDlJ75vEw/edit)
+
 
 ## deepstream-test5-helloworld1
 
