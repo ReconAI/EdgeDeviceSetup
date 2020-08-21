@@ -97,6 +97,13 @@ sudo pip3 install --extra-index-url https://developer.download.nvidia.com/comput
 
 4. (Optional) **Scikitlearn**. Install via pip, if you'd face issues, please refer [this thread](https://stackoverflow.com/questions/60448903/cannot-install-scikit-learn-on-jetson-nano)
 
+```sh
+sudo -H pip3 install cython
+sudo -H python3 -m pip install scipy==1.1.0
+sudo -H pip3 install scikit-learn
+```
+
+
 5. (Optional) **OpenCV with CUDA**
 
 Install required dependencies:

@@ -142,6 +142,14 @@ Frame Number= 110 Number of Objects= 1 Vehicle_count= 1 Person_count= 0
 Frame Number= 111 Number of Objects= 0 Vehicle_count= 0 Person_count= 0
 ```
 
+#### deepstream-test2 sample
+
+How to run:
+```sh
+cd /opt/nvidia/deepstream/deepstream-5.0/sources/python/apps/deepstream-test2
+python3 deepstream_test_2.py /opt/nvidia/deepstream/deepstream-5.0/samples/streams/sample_720p.h264
+```
+
 #### deepstream-test1-rtsp-out
 
 This application takes .h264 video as an input
